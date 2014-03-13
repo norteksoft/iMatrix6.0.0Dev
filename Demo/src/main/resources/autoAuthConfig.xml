@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+		<function path="/order/input-message.htm" systemCode="ems"></function>
+		<function path="/expense-report/delete-instance-expiation.htm" systemCode="ems"></function>
+		<function path="/expense-report/cancel-instance-expiation.htm" systemCode="ems"></function>
+		<function path="/expense-report/task-jump-expiation.htm" systemCode="ems"></function>
+		<function path="/widget/widget-test1.htm" ></function>
+		<function path="/widget/widget-test2.htm" ></function>
+		<function path="/widget/widget-test3.htm" ></function>
+		<function path="/widget/widget-test4.htm" ></function>
+		<function path="/widget/widget-test5.htm" ></function>
+		<function path="/widget/widget-test6.htm" ></function>
+		<function path="/widget/widget-test7.htm" ></function>
+		<function path="/widget/widget-test8.htm" ></function>
+		<function path="/widget/widget-test9.htm" ></function>
+		<function path="/widget/widget-test10.htm" ></function>
+		<function path="/widget/widget-test11.htm" ></function>
+</functions>

@@ -1,0 +1,5 @@
+.alarm td {
+	font-weight : bold !important;
+	background-color: red !important;
+	color: white !important;
+}

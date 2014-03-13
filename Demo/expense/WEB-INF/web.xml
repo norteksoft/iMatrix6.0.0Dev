@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>xts-oa</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml,classpath:applicationContext-security.xml,classpath:applicationContext-memcache.xml</param-value>
+	</context-param>
+	
+	<!-- 系统编码 -->
+	<context-param>
+		<param-name>systemCode</param-name>
+		<param-value>ems</param-value>
+	</context-param>
+	
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	
+	<!-- AjaxAnywhere Filter -->
+	<filter>
+        <filter-name>AjaxAnywhere</filter-name>
+        <filter-class>org.ajaxanywhere.AAFilter</filter-class>
+    </filter>
+
+	<!-- Hibernate Open Session In View filter-->
+	<filter>
+		<filter-name>osivFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+
+    <filter>
+        <filter-name>singleSignOutFilter</filter-name>
+        <filter-class>com.norteksoft.acs.web.filter.SingleSignOutFilter</filter-class>
+    </filter>
+	
+	<!--session过期处理的filter，会重定向到403页面-->
+	<filter>
+		<filter-name>SessionFailFilter</filter-name>
+		<filter-class>com.norteksoft.acs.web.filter.SessionFailFilter</filter-class>
+	</filter>
+	
+	<!-- SpringSecurity Filter -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+    
+    <!-- Struts2 filter,actionPackages定义扫描Action类的目录 -->
+	<filter>
+		<filter-name>struts2Filter</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+
+<!--filter mapping的顺序决定filter的执行循序，一定要确保顺序正确-->
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- AjaxAnywhere -->
+    <filter-mapping>
+        <filter-name>AjaxAnywhere</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>AjaxAnywhere</filter-name>
+        <url-pattern>*.htm</url-pattern>
+    </filter-mapping>
+
+	<filter-mapping>
+		<filter-name>osivFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+    
+    <!-- 单点登录 -->
+    <filter-mapping>
+        <filter-name>singleSignOutFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+		<filter-name>SessionFailFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+    <!-- 权限验证 -->
+    <filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/j_spring_cas_security_check</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/j_spring_security_logout</url-pattern>
+	</filter-mapping>
+	
+	<!-- struts2 -->
+	<filter-mapping>
+		<filter-name>struts2Filter</filter-name>
+		<url-pattern>*.htm</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>struts2Filter</filter-name>
+		<url-pattern>*.action</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+
+	<!--Spring ApplicationContext 载入 -->
+	<listener>
+		<listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>com.norteksoft.acs.web.listener.AcsContextListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>com.norteksoft.acs.web.listener.AcsHttpSessionListener</listener-class>
+	</listener>
+	
+	<!-- Spring 刷新Introspector防止内存泄露 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	
+	<!-- flex配置 -->
+	<listener>
+		<listener-class>flex.messaging.HttpFlexSession</listener-class>
+	</listener>
+	
+	 <!--Spring ApplicationContext jersey asm-3.1.jar,jersey-client-1.12.jar,jersey-core-1.12.jar,jersey-server-1.12.jar,jersey-servlet-1.12.jar,jettison-1.1.jar,jsr311-api-1.1.1.jar,jersey-spring-1.12.jar-->
+	<servlet>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.example.expense.expensereport.webService</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	<!--Spring ApplicationContext jersey -->
+	
+	
+	<servlet>
+		<servlet-name>flex</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>flex</servlet-name>
+		<url-pattern>/messagebroker/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 在线编辑文件 -->
+	<servlet>
+		<display-name>WebOffice</display-name>
+		<servlet-name>WebOffice</servlet-name>
+		<servlet-class>com.norteksoft.wf.engine.web.servlet.WebOffice</servlet-class>
+	</servlet>
+	<servlet>
+		<display-name>WebPdf</display-name>
+		<servlet-name>WebPdf</servlet-name>
+		<servlet-class>com.norteksoft.wf.engine.web.servlet.WebPdf</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>WebOffice</servlet-name>
+		<url-pattern>/WebOffice</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>WebPdf</servlet-name>
+		<url-pattern>/WebPdf</url-pattern>
+	</servlet-mapping>
+	
+	<!-- session超时定义,单位为分钟 -->
+	<session-config>
+		<session-timeout>20</session-timeout>
+	</session-config>
+	
+	<jsp-config>
+		<taglib id="aa">
+			<taglib-uri>http://ajaxanywhere.sourceforge.net</taglib-uri>
+			<taglib-location>/WEB-INF/tld/ajaxanywhere.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+		
+
+	<!-- 出错页面定义 -->
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/portal/exception-handle.action?type=500</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/portal/exception-handle.action?type=500</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/portal/exception-handle.action?type=404</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/portal/exception-handle.action?type=403</location>
+	</error-page>
+</web-app>

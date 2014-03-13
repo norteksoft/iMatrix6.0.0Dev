@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.convention.classes.reload" value="true" />
+	
+	<constant name="struts.convention.result.path" value="/WEB-INF/jsp/" />
+	<constant name="struts.convention.action.packages" value="com.example.expense" />
+	<constant name="struts.convention.package.locators.disable" value="true" />
+	<constant name="struts.custom.i18n.resources" value="message,mmsMessages,wfMessages" />
+	<constant name="struts.action.extension" value="htm,action" />
+
+	<!-- 用于CRUD Action的parent package -->
+	<package name="default" extends="struts-default">
+		<!-- 基于paramsPrepareParamsStack,增加store interceptor -->
+		<interceptors>
+			<interceptor-stack name="storeStack">
+				<interceptor-ref name="store">
+					<param name="operationMode">AUTOMATIC</param>
+				</interceptor-ref>
+				<interceptor-ref name="paramsPrepareParamsStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="storeStack" />
+		<!-- 放的顺序很重要 有待进一步研究
+		<global-results>
+			<result name="input">/common/converter-error.jsp</result>
+			<result name="Exception">/common/500.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" 	result="Exception"/>	
+		</global-exception-mappings>
+		-->
+		<action name="create-tree" method="createTree" class="com.norteksoft.mms.form.web.FormViewAction">
+			<result name="create-tree">/WEB-INF/jsp/form/form-view-create-tree.jsp</result>
+		</action>
+		<action name="get-data" method="getData" class="com.norteksoft.mms.form.web.FormViewAction">
+		</action>
+		<action name="show-data-selection" method="showDataSelection" class="com.norteksoft.mms.form.web.FormViewAction">
+			<result name="show-data-selection">/WEB-INF/jsp/form/form-view-show-data-selection.jsp</result>
+		</action>
+	</package>
+	<!-- 
+		使用Convention插件,实现约定大于配置的零配置文件风格.
+	           特殊的Result路径在Action类中使用@Result设定. 
+	           http://localhost:8080/dms/config-browser/index.htm
+	-->
+</struts>
