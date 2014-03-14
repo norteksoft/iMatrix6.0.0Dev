@@ -1,0 +1,201 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x6d99914b, pid=1748, tid=7332
+#
+# JRE version: 6.0_30-b12
+# Java VM: Java HotSpot(TM) Client VM (20.5-b03 mixed mode windows-x86 )
+# Problematic frame:
+# V  [jvm.dll+0xd914b]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x004e3400):  JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_in_vm, id=7332, stack(0x38710000,0x38760000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x00000000
+
+Registers:
+EAX=0x00000000, EBX=0x004e3400, ECX=0x000012e0, EDX=0x00000000
+ESP=0x3875f9b0, EBP=0x3875f9ec, ESI=0x39665ca0, EDI=0x3875fbc4
+EIP=0x6d99914b, EFLAGS=0x00010202
+
+Top of Stack: (sp=0x3875f9b0)
+0x3875f9b0:   00000000 004e3400 0057d3e8 00000114
+0x3875f9c0:   3875fbc4 00000113 39665ca4 004e2238
+0x3875f9d0:   3a0e59e8 3a0e6ef8 3a0ed9dc 3875fbc4
+0x3875f9e0:   0000042c 39665cac 000025cc 3875fa74
+0x3875f9f0:   6d99974b 00000000 39665ca0 39665cb0
+0x3875fa00:   004e3400 00031b90 3875fbc4 39f59fd8
+0x3875fa10:   39f8bb68 39f8bb68 6daea2cc 00000701
+0x3875fa20:   39d09ca8 35080e33 0000077f 3875fa4c 
+
+Instructions: (pc=0x6d99914b)
+0x6d99912b:   b1 9f f2 ff 8b 4d f8 8b 01 8b 48 24 85 c9 75 0d
+0x6d99913b:   8b 55 08 8b 0a 8b 50 1c 89 51 24 eb 08 8b 45 08
+0x6d99914b:   8b 10 89 4a 24 8b b3 a4 00 00 00 8b 46 04 8b 4e
+0x6d99915b:   08 8b 56 0c 6a 08 89 75 e0 89 45 e4 89 4d e8 89 
+
+
+Register to memory mapping:
+
+EAX=0x00000000 is an unknown value
+EBX=0x004e3400 is a thread
+ECX=0x000012e0 is an unknown value
+EDX=0x00000000 is an unknown value
+ESP=0x3875f9b0 is pointing into the stack for thread: 0x004e3400
+EBP=0x3875f9ec is pointing into the stack for thread: 0x004e3400
+ESI=0x39665ca0 is an unknown value
+EDI=0x3875fbc4 is pointing into the stack for thread: 0x004e3400
+
+
+Stack: [0x38710000,0x38760000],  sp=0x3875f9b0,  free space=318k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0xd914b]
+V  [jvm.dll+0xd974b]
+V  [jvm.dll+0xd9c25]
+V  [jvm.dll+0xc2a64]
+V  [jvm.dll+0x193cb0]
+C  [jdwp.dll+0x7d56]
+C  [jdwp.dll+0xba32]  Agent_OnLoad+0x9a7
+C  [jdwp.dll+0x17d55]  Agent_OnLoad+0xccca
+V  [jvm.dll+0x140ffc]
+C  [msvcr71.dll+0x9565]  endthreadex+0xa0
+C  [KERNEL32.DLL+0x2850d]  BaseThreadInitThunk+0xe
+C  [ntdll.dll+0x5bf39]  RtlInitializeExceptionChain+0x85
+C  [ntdll.dll+0x5bf0c]  RtlInitializeExceptionChain+0x58
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x39d48800 JavaThread "btpool0-5" [_thread_blocked, id=2496, stack(0x3c090000,0x3c0e0000)]
+  0x398a6000 JavaThread "session timer" daemon [_thread_blocked, id=2712, stack(0x3bc20000,0x3bc70000)]
+  0x398a5c00 JavaThread "Timer-1" daemon [_thread_blocked, id=6320, stack(0x3bb90000,0x3bbe0000)]
+  0x398a5400 JavaThread "DefaultQuartzScheduler_QuartzSchedulerThread" [_thread_blocked, id=11044, stack(0x3bb00000,0x3bb50000)]
+  0x398a5000 JavaThread "DefaultQuartzScheduler_Worker-10" [_thread_blocked, id=9300, stack(0x3ba70000,0x3bac0000)]
+  0x398a4800 JavaThread "DefaultQuartzScheduler_Worker-9" [_thread_blocked, id=3844, stack(0x3b9e0000,0x3ba30000)]
+  0x398a8000 JavaThread "DefaultQuartzScheduler_Worker-8" [_thread_blocked, id=12688, stack(0x3b950000,0x3b9a0000)]
+  0x398a4000 JavaThread "DefaultQuartzScheduler_Worker-7" [_thread_blocked, id=776, stack(0x3b8c0000,0x3b910000)]
+  0x39b12000 JavaThread "DefaultQuartzScheduler_Worker-6" [_thread_blocked, id=9908, stack(0x3b830000,0x3b880000)]
+  0x39b0e400 JavaThread "DefaultQuartzScheduler_Worker-5" [_thread_blocked, id=2280, stack(0x3b7a0000,0x3b7f0000)]
+  0x39b0e000 JavaThread "DefaultQuartzScheduler_Worker-4" [_thread_blocked, id=13136, stack(0x3b710000,0x3b760000)]
+  0x39b0d800 JavaThread "DefaultQuartzScheduler_Worker-3" [_thread_blocked, id=10412, stack(0x3b680000,0x3b6d0000)]
+  0x39c39800 JavaThread "DefaultQuartzScheduler_Worker-2" [_thread_blocked, id=11148, stack(0x3b5f0000,0x3b640000)]
+  0x39c39000 JavaThread "DefaultQuartzScheduler_Worker-1" [_thread_blocked, id=13708, stack(0x3b560000,0x3b5b0000)]
+  0x39984800 JavaThread "MySQL Statement Cancellation Timer" daemon [_thread_blocked, id=1060, stack(0x3a960000,0x3a9b0000)]
+  0x39441000 JavaThread "Timer-0" daemon [_thread_blocked, id=5940, stack(0x39900000,0x39950000)]
+  0x38b31800 JavaThread "btpool0-0 - Acceptor0 SelectChannelConnector@0.0.0.0:8085" [_thread_in_native, id=10964, stack(0x38c70000,0x38cc0000)]
+  0x004f8c00 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=6788, stack(0x38950000,0x389a0000)]
+  0x004f8400 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=11672, stack(0x388c0000,0x38910000)]
+  0x004ea400 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=14248, stack(0x38830000,0x38880000)]
+  0x004e7400 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=2592, stack(0x387a0000,0x387f0000)]
+=>0x004e3400 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_in_vm, id=7332, stack(0x38710000,0x38760000)]
+  0x004c3800 JavaThread "Attach Listener" daemon [_thread_blocked, id=4092, stack(0x385f0000,0x38640000)]
+  0x004c1800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=5304, stack(0x38560000,0x385b0000)]
+  0x004b8800 JavaThread "Finalizer" daemon [_thread_blocked, id=10048, stack(0x384d0000,0x38520000)]
+  0x004b3c00 JavaThread "Reference Handler" daemon [_thread_blocked, id=13172, stack(0x38440000,0x38490000)]
+  0x0057e800 JavaThread "main" [_thread_blocked, id=9108, stack(0x00320000,0x00370000)]
+
+Other Threads:
+  0x004b0000 VMThread [stack: 0x383b0000,0x38400000] [id=11760]
+  0x0050a800 WatcherThread [stack: 0x389e0000,0x38a30000] [id=4720]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 60736K, used 0K [0x040b0000, 0x08290000, 0x140b0000)
+  eden space 54016K,   0% used [0x040b0000, 0x040b0000, 0x07570000)
+  from space 6720K,   0% used [0x07570000, 0x07570000, 0x07c00000)
+  to   space 6720K,   0% used [0x07c00000, 0x07c00000, 0x08290000)
+ tenured generation   total 134800K, used 73570K [0x140b0000, 0x1c454000, 0x340b0000)
+   the space 134800K,  54% used [0x140b0000, 0x18888af8, 0x18888c00, 0x1c454000)
+ compacting perm gen  total 65536K, used 65506K [0x340b0000, 0x380b0000, 0x380b0000)
+   the space 65536K,  99% used [0x340b0000, 0x380a8818, 0x380a8a00, 0x380b0000)
+No shared spaces configured.
+
+Code Cache  [0x020b0000, 0x02fd8000, 0x040b0000)
+ total_blobs=6828 nmethods=6641 adapters=127 free_code_cache=17730048 largest_free_block=41280
+
+Dynamic libraries:
+0x00400000 - 0x00425000 	D:\MyToolbox\jdk1.6.0_30\bin\javaw.exe
+0x77740000 - 0x77897000 	C:\windows\SYSTEM32\ntdll.dll
+0x76d00000 - 0x76e30000 	C:\windows\SYSTEM32\KERNEL32.DLL
+0x76e30000 - 0x76ed6000 	C:\windows\SYSTEM32\KERNELBASE.dll
+0x76760000 - 0x7680e000 	C:\windows\SYSTEM32\ADVAPI32.dll
+0x77180000 - 0x77296000 	C:\windows\SYSTEM32\USER32.dll
+0x772a0000 - 0x77351000 	C:\windows\SYSTEM32\msvcrt.dll
+0x76850000 - 0x76884000 	C:\windows\SYSTEM32\sechost.dll
+0x76c50000 - 0x76cfc000 	C:\windows\SYSTEM32\RPCRT4.dll
+0x76ab0000 - 0x76bad000 	C:\windows\SYSTEM32\GDI32.dll
+0x74d70000 - 0x74d8c000 	C:\windows\SYSTEM32\SspiCli.dll
+0x74d60000 - 0x74d69000 	C:\windows\SYSTEM32\CRYPTBASE.dll
+0x74d00000 - 0x74d51000 	C:\windows\SYSTEM32\bcryptPrimitives.dll
+0x76bb0000 - 0x76bd0000 	C:\windows\system32\IMM32.DLL
+0x76340000 - 0x7641e000 	C:\windows\SYSTEM32\MSCTF.dll
+0x7c340000 - 0x7c396000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\msvcr71.dll
+0x6d8c0000 - 0x6db6f000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\client\jvm.dll
+0x74940000 - 0x74961000 	C:\windows\SYSTEM32\WINMM.dll
+0x74910000 - 0x7493b000 	C:\windows\SYSTEM32\WINMMBASE.dll
+0x77630000 - 0x77676000 	C:\windows\SYSTEM32\cfgmgr32.dll
+0x76be0000 - 0x76bfe000 	C:\windows\SYSTEM32\DEVOBJ.dll
+0x71660000 - 0x71707000 	C:\windows\system32\apphelp.dll
+0x6d870000 - 0x6d87c000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\verify.dll
+0x6d3d0000 - 0x6d3ef000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\java.dll
+0x6d420000 - 0x6d449000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\jdwp.dll
+0x6d740000 - 0x6d746000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\npt.dll
+0x6d8b0000 - 0x6d8bf000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\zip.dll
+0x6d2b0000 - 0x6d2b7000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\dt_socket.dll
+0x75f60000 - 0x75fb0000 	C:\windows\SYSTEM32\WS2_32.dll
+0x75e60000 - 0x75e68000 	C:\windows\SYSTEM32\NSI.dll
+0x71330000 - 0x71340000 	C:\windows\system32\napinsp.dll
+0x71290000 - 0x712a4000 	C:\windows\system32\pnrpnsp.dll
+0x71280000 - 0x71290000 	C:\windows\system32\NLAapi.dll
+0x74660000 - 0x746aa000 	C:\windows\System32\mswsock.dll
+0x745e0000 - 0x74655000 	C:\windows\SYSTEM32\DNSAPI.dll
+0x71270000 - 0x71279000 	C:\windows\System32\winrnr.dll
+0x70fa0000 - 0x70fdf000 	C:\windows\System32\fwpuclnt.dll
+0x71260000 - 0x71267000 	C:\Windows\System32\rasadhlp.dll
+0x6d600000 - 0x6d609000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\management.dll
+0x70f70000 - 0x70f8a000 	C:\windows\SYSTEM32\CRYPTSP.dll
+0x70f30000 - 0x70f6e000 	C:\windows\system32\rsaenh.dll
+0x74cc0000 - 0x74cdb000 	C:\windows\SYSTEM32\USERENV.dll
+0x74ca0000 - 0x74cb1000 	C:\windows\SYSTEM32\profapi.dll
+0x6d6b0000 - 0x6d6c3000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\net.dll
+0x74a40000 - 0x74a60000 	C:\windows\SYSTEM32\IPHLPAPI.DLL
+0x74a30000 - 0x74a38000 	C:\windows\SYSTEM32\WINNSI.DLL
+0x6d6d0000 - 0x6d6d9000 	D:\MyToolbox\jdk1.6.0_30\jre\bin\nio.dll
+0x75f40000 - 0x75f46000 	C:\windows\system32\PSAPI.DLL
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:58238 -Drjrcontext=/imatrix -Drjrwebapp=webapp -Drjrport=8085 -Drjrkeystore=C:\Users\Administrator\.keystore -Drjrkeypassword=changeit -Drjrpassword=changeit -Drjrclasspath=D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\target\classes;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\classes;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\activation-1.1.1.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\ajaxanywhere-1.2.1.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\antlr-2.7.6.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\aopalliance-1.0.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\asm-3.1.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\aspectjweaver-1.6.9.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\backport-util-concurrent-2.2.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\bsh-2.0b4.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\cas-client-core-3.2.1.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\cglib-nodep-2.2.2.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\chardet-1.0.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\codemodel-2.5.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\commons-beanutils-1.8.3.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\commons-codec-1.6.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\commons-collections-3.2.1.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\commons-dbcp-1.4.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\commons-fileupload-1.2.2.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\commons-io-2.1.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\commons-lang-2.6.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\commons-logging-1.1.1.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\commons-pool-1.6.jar;D:\MyToolbox\eclipse3.5\ws\imatrix-6.0.0.RC\webapp\WEB-INF\lib\dbstep-1.0-Xmx768m -Dfile.encoding=UTF-8 
+java_command: runjettyrun.Bootstrap
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\MyToolbox\jdk1.6.0_30
+PATH=D:\MyToolbox\jdk1.6.0_30\jre\bin;D:/MyToolbox/jdk1.6.0_30/bin/../jre/bin/client;D:/MyToolbox/jdk1.6.0_30/bin/../jre/bin;G:\app\ldx\product\11.2.0\dbhome_1\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\Lenovo\ReadyApps;D:\MyToolbox\jdk1.6.0_30\bin;D:\mvn\apache-maven-3.0.4\bin;G:\Program Files\TortoiseSVN\bin
+USERNAME=ldx
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 21 Model 16 Stepping 1, AuthenticAMD
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows NT 6.2 Build 9200 
+
+CPU:total 4 (4 cores per cpu, 1 threads per core) family 21 model 16 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, mmxext, lzcnt, sse4a
+
+Memory: 4k page, physical 8353792k(2973856k free), swap 9598976k(3256028k free)
+
+vm_info: Java HotSpot(TM) Client VM (20.5-b03) for windows-x86 JRE (1.6.0_30-b12), built on Nov 10 2011 01:51:00 by "java_re" with MS VC++ 7.1 (VS2003)
+
+time: Tue Dec 31 15:35:00 2013
+elapsed time: 2165 seconds
+
