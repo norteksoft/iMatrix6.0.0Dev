@@ -1,0 +1,184 @@
+@charset "UTF-8";
+
+/**  栏目的颜色    **/
+#col1 {background: #E7EAF1; border-right: 1px solid #B7B7B7;}
+#col2 {background: #E7EAF1; border-left: 1px solid #B7B7B7;}
+#col3 {background: #D5DEE7; }
+#main {background: #fffff;padding: 0px; border-top: 1px solid #B7B7B7;}
+#main, #col1, #col2, #col3{height:auto;}
+
+/** 所有超连接没有虚框  **/
+A {outline:0; color:#4D87C7; text-decoration:none;}
+
+/** 所有输入框，单选，多选没有虚框  **/
+input{outline:0; color:#333333; text-decoration:none;}
+
+/** 一级导航   **/
+#header{background-color: #3e4f70;	height: 65px; border-bottom: 1px #fff solid;}
+#header h3{ padding: 10px 0 0 20px; color: #fff; }
+.firstNav{
+	margin: 0px;
+	background: url(../images/bg-nav.jpg);
+	height: 25px;
+}
+.firstNav li{
+	width:50px;
+	display: inline;
+	border-right: 1px #949494 solid;
+	border-left: 1px #4F4F4F solid;
+	margin: 0;
+	font-size: 10.5pt;
+	line-height: 22px;
+	text-align:center;
+	float:left;
+}
+.firstNav li.navPrdt{
+	width:80px;
+	background: #D4D9D1;
+}
+.firstNav li.navPrdt a{
+	color: #272727;
+}
+.firstNav li.logo{
+	width:115px;
+}
+.firstNav li a,.firstNav li.select{ 
+	font-size: 10.5pt;
+	padding: 0 10px; 
+	text-decoration:none;
+	color: #fff;
+}
+
+.helpNav{
+	margin: 20px 20px 0 0;
+	font-size: 0.8em;
+	float: right;
+	color: #fff;
+	text-align: center;
+}
+.helpNav li{
+	border-left: 1px solid;
+	display: inline;
+	margin: 0;
+}
+.helpNav li a{
+	font-size:10pt;
+	padding: 0 0.7em; 
+	color: #fff;
+	text-decoration: none;
+}
+.helpNav li.start{
+	border:none;
+	display: inline;
+}
+
+/** 二级导航   **/
+#secNav{
+	margin:0;
+	padding: 0;
+	background: url(../images/sec-background.jpg);
+	border-bottom: 9px #f0f0f0 solid;
+	height: 26px;
+}
+#secNav li{
+	display: inline;
+	border-right: 1px #9ea2a3 solid;
+	margin:0px;
+	padding: 0px;
+	font-size: 10.5pt;
+    line-height: 26px;
+    text-align:center;
+	float:left;
+}
+#secNav li a{
+	font-size: 10.5pt;
+	text-decoration: none;
+	margin: 0 10px;
+	color: #000;
+}
+#secNav li a:ACTIVE, #secNav li a:VISITED{
+	color: #000;
+}
+#secNav li.selected{
+	background-color: #f1f1f1;
+}
+
+/** 一级导航选中   **/
+.fristBg{
+	background: url(../images/fristBg.jpg);
+}
+
+/** 一级导航鼠标移动到   **/
+.firstNav li.system{}
+.firstNav li.system:hover{background: url(../images/mouseBg.jpg);}
+.firstNav li.navPrdt:hover{background: #A5A5A5;}
+
+/** 列表TABLE **/
+.Table{border:1px solid #DEDEDE; width:100%; border-collapse:collapse; background: #FFFFFF;}
+.Table thead tr{background-color:#F5F5F5; height:20px;}
+.Table thead th{border-left:1px solid #DEDEDE; border-right:1px solid #DEDEDE; text-align:center;}
+.Table tbody tr {height:20px;}
+.Table tbody td {border:1px solid #DEDEDE;}
+/** 使行变色 **/
+table.changeTR tbody tr:hover{background-color: #D7EFFF;}
+/** TD居中 **/
+.centerTD{text-align: center;}
+
+/** FormTABLE **/
+.formTable{border:0px solid; width:100%; border-collapse:collapse; background:#FFFFFF;}
+.formTable tbody tr {height:30px;}
+.formTable tbody td {}
+
+
+/** 无滑动左栏按钮  **/
+div.leftMenu{
+	background: url(../images/bigBtn1.jpg);
+	border-bottom: 1px solid #DFDFDF;
+	height: 21px;
+	line-height: 21px;
+	width: 150px;
+}
+div.leftMenu:hover{background: url(../images/bigBtn3.jpg);}
+a.leftMenu{
+	color: #545454;
+	margin-left: 30px;
+	font-size: 10pt;
+}
+
+/** 按钮样式  **/
+.btnStyle {
+background:transparent url(../images/bigBtn1.jpg) repeat scroll 0 0;
+border:1px solid #91B8D2;
+color:#000000;
+padding:5px 10px;
+}
+.btnStyle:hover{background:transparent url(../images/bigBtn3.jpg) repeat scroll 0 0;}
+
+/** 按钮样式  **/
+.btnStyle1 {
+background:transparent url(../images/bigBtn1.jpg) repeat scroll 0 0;
+border:1px solid #91B8D2;
+color:#D2D2D2;
+padding:5px 10px;
+}
+.btnStyle1:hover{background:transparent url(../images/bigBtn3.jpg) repeat scroll 0 0;}
+/**页签选中样式**/
+.selectind { background-color: #f1f1f1;}
+.index{display:inline; color: #000; font-size: 10.5pt;}
+.index a:active { text-decoration: none; }
+
+.leftCol{width: auto; border: 0px solid; padding-left: 30px;margin-top:5px }
+
+/*页面上的Loading*/
+.loading{
+	display:none;
+	color: white;
+	background-color: blue;
+	border: 1 solid black;
+	z-index:9999;
+	text-align:center;
+	width:100px;
+	float:right;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold; font-size: 11px;
+}

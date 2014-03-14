@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/WEB-INF/jsp/decorators">
+
+    <excludes>
+        <pattern>/error.jsp</pattern>
+        <pattern>/index.jsp</pattern>
+    </excludes>
+    
+    <decorator name="organization" page="organizationContent.jsp">
+        <pattern>/sale/*</pattern>
+    </decorator>
+    
+    <decorator name="header" page="header.jsp"/>
+    <decorator name="footer" page="footer.jsp"/>
+    <decorator name="organizationSidebar" page="organizationSidebar.jsp"/>
+</decorators>

@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+.noListStyle li{
+	list-style:none;
+	list-style-type: none;
+	
+	}

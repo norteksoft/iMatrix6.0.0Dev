@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>ACS</display-name>
+	<!-- Spring ApplicationContext配置文件的路径,可使用通配符,多个路径用,号分隔
+		此参数用于后面的Spring Context Loader -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml,classpath:applicationContext-memcache.xml</param-value>
+	</context-param>
+		
+	<context-param>
+		<param-name>systemCode</param-name>
+		<param-value>sales</param-value>
+	</context-param>
+
+	<!-- Character Encoding filter -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	
+	<!-- AjaxAnywhere Filter -->
+	<filter>
+        <filter-name>AjaxAnywhere</filter-name>
+        <filter-class>org.ajaxanywhere.AAFilter</filter-class>
+    </filter>
+
+	<!-- Hibernate Open Session In View filter-->
+	<filter>
+		<filter-name>osivFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+    
+    <filter>
+		<filter-name>sessionFailFilter</filter-name>
+		<filter-class>com.norteksoft.acs.web.filter.SessionFailFilter</filter-class>
+	</filter>
+    
+  
+
+	<!-- Struts2 filter,actionPackages定义扫描Action类的目录 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AjaxAnywhere</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>AjaxAnywhere</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
+
+	<filter-mapping>
+		<filter-name>osivFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>com.norteksoft.acs.web.listener.AcsContextListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>com.norteksoft.acs.web.listener.AcsHttpSessionListener</listener-class>
+	</listener>
+	
+	<!-- Spring 刷新Introspector防止内存泄露 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	<!-- taglib配置 -->
+	<jsp-config>
+		<taglib id="aa">
+			<taglib-uri>http://ajaxanywhere.sourceforge.net/</taglib-uri>
+			<taglib-location>/WEB-INF/tld/ajaxanywhere.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	
+
+	<!-- session超时定义,单位为分钟 -->
+	<session-config>
+		<session-timeout>20</session-timeout>
+	</session-config>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/common/500.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/common/404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>403</error-code>
+		<location>/common/403.jsp</location>
+	</error-page>
+</web-app>
